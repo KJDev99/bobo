@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="UTF-8" />
+    <title>Revive</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/kirish.css" />
+  </head>
+  <body>
+    <p class="idea" href="index.html">OZOD</p>
+    <div class="header finisher-header">
+      <div class="col-12 text-lg-center kirish_logo">
+        <span class="logo-outer">
+          <span class="logo-inner">
+            <a href="index.html">OZODBOBO</a>
+          </span>
+        </span>
+        <div class="index_icons">
+          <a target="_blank" href="https://t.me/">
+            <i
+              class="fa-brands fa-telegram fa-shake fa-xs"
+              style="color: #111111ce"
+            ></i>
+          </a>
+          <a target="_blank" href="https://instagram.com">
+            <i
+              class="fa-brands fa-instagram fa-shake fa-xs"
+              style="color: #111"
+            ></i>
+          </a>
+          <a target="_blank" href="https://youtube.com">
+            <i
+              class="fa-brands fa-youtube fa-shake fa-xs"
+              style="color: #111"
+            ></i>
+          </a>
+          <a target="_blank" href="https://youtube.com">
+            <i
+              class="fa-brands fa-facebook fa-shake fa-xs"
+              style="color: #111"
+            ></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="custom-modal" id="mainModal">
+        <div class="custom-modal-content">
+          <a href="talim.html" class="col">Ta’lim</a>
+          <a href="uyjoy.html">Uy&nbsp;joy</a>
+          <a href="avtotransport.html">Avtotransport</a>
+          <a href="kaferestoran.html">Kafe&nbsp;Restoran</a>
+          <a href="sport.html">Sport</a>
+          <a href="savdodokon.html">Savdo&nbsp;do’kon</a>
+          <a href="kongilochar.html">Ko’ngilochar</a>
+          <a href="xizmatlar.html">Xizmatlar</a>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="./js/finisher-header.es5.min.js"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        new FinisherHeader({
+          count: 4,
+          size: {
+            min: 1200,
+            max: 1500,
+            pulse: 0.1,
+          },
+          speed: {
+            x: {
+              min: 0,
+              max: 0.2,
+            },
+            y: {
+              min: 0,
+              max: 0.2,
+            },
+          },
+          colors: {
+            background: "#ab51ff",
+            particles: ["#ff636b", "#fbff56", "#ffc648", "#ff77ff"],
+          },
+          blending: "lighten",
+          opacity: {
+            center: 0.8,
+            edge: 0.2,
+          },
+          skew: -2,
+          shapes: ["c", "t"],
+        });
+        document.body.classList.add("modal-open");
+      });
+    </script>
+  </body>
+</html>

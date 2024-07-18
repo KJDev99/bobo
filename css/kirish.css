@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.custom-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.custom-modal-content {
+  background-color: #fff;
+  display: flex;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.custom-modal-content a {
+  display: inline-block;
+  margin: 15px 0;
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  font-family: "Rubik", sans-serif;
+  transition: all 0.4s ease;
+  font-weight: 400;
+  margin: 5px;
+}
+.custom-modal-content a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #f093fb, #f5576c);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+.custom-modal-content a:hover::before {
+  left: 0;
+}
+.custom-modal-content a:hover {
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+.custom-modal-content a span {
+  display: block;
+  transition: transform 0.4s ease;
+}
+.custom-modal-content a:hover span {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .custom-modal-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .custom-modal-content a {
+    font-size: 20px;
+    padding: 12px 25px;
+  }
+}
+@media (max-width: 480px) {
+  .custom-modal-content {
+    padding: 20px;
+  }
+  .custom-modal-content a {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+}
+
+.kirish_logo {
+  text-align: center;
+  margin-bottom: 100px;
+}
+.idea {
+  font-size: 600px;
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translate(-50%);
+
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.653) !important;
+}
+.kirish_logo a {
+  font-size: 60px;
+  color: black !important;
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+}
+
+.logo-inner {
+  position: relative;
+}
+
+@keyframes changeColorInner {
+  0%,
+  100% {
+    background: #d0d0d0;
+  }
+  50% {
+    background: #13113a;
+  }
+}
+
+@keyframes changeColorOuter {
+  0%,
+  100% {
+    background: #13113a;
+  }
+  50% {
+    background: #d0d0d0;
+  }
+}
+
+.logo-inner:before,
+.logo-inner:after {
+  bottom: 10px;
+  height: 2px;
+  width: 80px;
+  background: #d0d0d0;
+  content: "";
+  display: block;
+  animation: changeColorInner 2s infinite;
+}
+
+.logo-outer:before,
+.logo-outer:after {
+  bottom: 15px;
+  height: 2px;
+  width: 120px;
+  background: #13113a;
+  content: "";
+  display: block;
+  animation: changeColorOuter 2s infinite;
+}
+.finisher-header {
+  width: 100%;
+  height: 600px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.index_icons i {
+  --fa-animation-duration: 2.5s;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.index_icons {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 420px;
+}
