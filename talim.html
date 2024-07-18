@@ -107,6 +107,11 @@
     </header>
 
     <section class="home-banner-area relative">
+      <div
+        id="header1"
+        class="header finisher-header header_absolute"
+        style="width: 100%; height: 300px"
+      ></div>
       <div class="container-fluid">
         <div class="row">
           <div class="owl-carousel home-banner-owl">
@@ -694,10 +699,8 @@
       </div>
     </section>
 
-    <footer class="footer-area section-gap">
-      <div class="container">
-        <h1>HI</h1>
-      </div>
+    <footer class="footer-area">
+      <div class="container">Logo, navigation, etc.</div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -719,5 +722,42 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"
     ></script>
     <script src="js/main.js"></script>
+    <script
+      type="text/javascript"
+      src="./js/finisher-header.es5.min.js"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        new FinisherHeader({
+          count: 6,
+          size: {
+            min: 1100,
+            max: 1500,
+            pulse: 0,
+          },
+          speed: {
+            x: {
+              min: 0.1,
+              max: 0.3,
+            },
+            y: {
+              min: 0.1,
+              max: 0.3,
+            },
+          },
+          colors: {
+            background: "#9138e5",
+            particles: ["#6bd6ff", "#ffcb57", "#ff333d"],
+          },
+          blending: "overlay",
+          opacity: {
+            center: 1,
+            edge: 0.1,
+          },
+          skew: 0,
+          shapes: ["c", "t"],
+        });
+      });
+    </script>
   </body>
 </html>

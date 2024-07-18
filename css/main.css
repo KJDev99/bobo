@@ -1574,7 +1574,7 @@ h6 {
 }
 
 .header-area {
-  position: relative;
+  position: fixed;
   background-color: #fff;
   width: 100%;
   z-index: 999999;
@@ -1582,12 +1582,14 @@ h6 {
   -moz-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
+  box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
 }
 
 @media (max-width: 991px) {
   .header-area {
-    position: absolute;
-    box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
   }
 }
 
@@ -1621,10 +1623,6 @@ h6 {
 }
 
 .header-fixed {
-  position: fixed;
-  left: 0;
-  top: 0;
-  box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
 }
 
 @media (min-width: 992px) {
@@ -1694,7 +1692,7 @@ h6 {
 }
 
 .menu-right .nav-item .nav-link {
-  margin-right:20px;
+  margin-right: 20px;
   color: #000;
   font-size: 14px;
   font-family: "Playfair Display", serif;
@@ -1782,6 +1780,7 @@ h6 {
 
 .home-banner-area {
   position: relative;
+  padding-top: 100px;
 }
 
 @media (max-width: 991px) {
@@ -1821,8 +1820,23 @@ h6 {
   left: 0px;
   width: 73%;
   height: 100%;
-  background: #13113a;
   box-shadow: 0px 10px 30px rgba(153, 153, 153, 0.3);
+}
+.header_absolute {
+  height: calc(100vh - 100px) !important;
+
+  position: absolute;
+}
+.home-banner-area .container-fluid:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 27%;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0px 10px 30px rgba(153, 153, 153, 0.3);
+  height: calc(100vh - 100px) !important;
 }
 
 @media (max-width: 991px) {
@@ -2416,8 +2430,6 @@ h6 {
   display: table;
 }
 
-
-
 .widget-wrap .popular-post-widget .popular-title {
   color: #13113a;
   font-size: 20px;
@@ -2873,7 +2885,6 @@ h6 {
 }
 
 .footer-area {
-  background: #000000;
+  background: #000000c1;
+  height: 280px;
 }
-
-
