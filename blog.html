@@ -35,6 +35,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- JavaScript Bundle with Popper -->
+
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -45,11 +53,8 @@
           <div
             class="header-top d-flex justify-content-between align-items-lg-center navbar-expand-lg"
           >
-            <div class="col menu-left">
-              <a class="active" href="index.html">Ta’lim</a>
-              <a href="category.html">Uy&nbsp;Joy</a>
-              <a href="archive.html">Avtotransport</a>
-              <a href="archive.html">Kafe&nbsp;Restoran</a>
+            <div class="col menu-left" id="menuLeft">
+              <!-- Dynamic menu items will be inserted here -->
             </div>
             <div class="col-4 text-lg-center mt-2 mt-lg-0">
               <span class="logo-outer">
@@ -67,33 +72,12 @@
               >
                 <span class="lnr lnr-menu">menu</span>
               </button>
-
               <div
                 class="collapse navbar-collapse menu-right"
                 id="collapsibleNavbar"
               >
-                <ul class="navbar-nav w-100">
-                  <li class="nav-item hide-lg">
-                    <a class="nav-link" href="index.html">Home</a>
-                  </li>
-                  <li class="nav-item hide-lg">
-                    <a class="nav-link" href="category.html"></a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="elements.html">Sport</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="elements.html"
-                      >Savdo&nbsp;do’kon</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="blog-single.html">Ko’ngilochar</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Xizmatlar</a>
-                  </li>
+                <ul class="navbar-nav w-100" id="menuRight">
+                  <!-- Dynamic menu items will be inserted here -->
                 </ul>
               </div>
             </nav>
@@ -109,130 +93,70 @@
             <div class="row">
               <div class="col-lg-12 col-md-12">
                 <div class="single-amenities">
-                    <div class="section_image">
-                        <div class="container">
-                            <div class="carousel">
-                                <input type="radio" name="slides" checked="checked" id="slide-1">
-                                <input type="radio" name="slides" id="slide-2">
-                                <input type="radio" name="slides" id="slide-3">
-                                <input type="radio" name="slides" id="slide-4">
-                                <input type="radio" name="slides" id="slide-5">
-                                <input type="radio" name="slides" id="slide-6">
-                                <ul class="carousel__slides">
-                                    <li class="carousel__slide">
-                                        <figure>
-                                            <div>
-                                                <img src="https://picsum.photos/id/1041/800/450" alt="">
-                                            </div>
-                                            
-                                        </figure>
-                                    </li>
-                                    <li class="carousel__slide">
-                                        <figure>
-                                            <div>
-                                                <img src="https://picsum.photos/id/1043/800/450" alt="">
-                                            </div>
-                                           
-                                        </figure>
-                                    </li>
-                                    <li class="carousel__slide">
-                                        <figure>
-                                            <div>
-                                                <img src="https://picsum.photos/id/1044/800/450" alt="">
-                                            </div>
-                                            
-                                        </figure>
-                                    </li>
-                                    <li class="carousel__slide">
-                                        <figure>
-                                            <div>
-                                                <img src="https://picsum.photos/id/1045/800/450" alt="">
-                                            </div>
-                                           
-                                        </figure>
-                                    </li>
-                                    <li class="carousel__slide">
-                                        <figure>
-                                            <div>
-                                                <img src="https://picsum.photos/id/1049/800/450" alt="">
-                                            </div>
-                                           
-                                        </figure>
-                                    </li>
-                                    <li class="carousel__slide">
-                                        <figure>
-                                            <div>
-                                                <img src="https://picsum.photos/id/1052/800/450" alt="">
-                                            </div>
-                                          
-                                        </figure>
-                                    </li>
-                                </ul>    
-                                <ul class="carousel__thumbnails">
-                                    <li>
-                                        <label for="slide-1"><img src="https://picsum.photos/id/1041/150/150" alt=""></label>
-                                    </li>
-                                    <li>
-                                        <label for="slide-2"><img src="https://picsum.photos/id/1043/150/150" alt=""></label>
-                                    </li>
-                                    <li>
-                                        <label for="slide-3"><img src="https://picsum.photos/id/1044/150/150" alt=""></label>
-                                    </li>
-                                    <li>
-                                        <label for="slide-4"><img src="https://picsum.photos/id/1045/150/150" alt=""></label>
-                                    </li>
-                                    <li>
-                                        <label for="slide-5"><img src="https://picsum.photos/id/1049/150/150" alt=""></label>
-                                    </li>
-                                    <li>
-                                        <label for="slide-6"><img src="https://picsum.photos/id/1052/150/150" alt=""></label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                  <div class="section_image">
+                    <div class="container">
+                      <div class="carousel">
+                        <input
+                          type="radio"
+                          name="slides"
+                          checked="checked"
+                          id="slide-1"
+                        />
+                        <input type="radio" name="slides" id="slide-2" />
+                        <input type="radio" name="slides" id="slide-3" />
+                        <input type="radio" name="slides" id="slide-4" />
+                        <input type="radio" name="slides" id="slide-5" />
+                        <input type="radio" name="slides" id="slide-6" />
+                        <ul class="carousel__slides">
+                          <!-- Slides will be added dynamically -->
+                        </ul>
+                        <ul class="carousel__thumbnails">
+                          <!-- Thumbnails will be added dynamically -->
+                        </ul>
+                      </div>
                     </div>
+                  </div>
                   <div class="amenities-details">
-                    <h5>
-                      <a href="#"
-                        >There's goting to be a musical about meghan
-                      </a>
-                    </h5>
+                    <h5><a href="#" id="blog-title"></a></h5>
                     <div class="amenities-meta mb-10 n">
-                      <a href="#" class
-                        ><span class="ti-calendar"></span>20th Nov, 2018</a
-                      >
+                      <a href="#" id="blog-date"></a>
                     </div>
-                    <p>
-                      Creepeth green light appear let rule only you're divide
-                      and lights moving and isn't given creeping deep. Lorem
-                      ipsum, dolor sit amet consectetur adipisicing elit.
-                      Dolorum enim rerum inventore nulla, veniam debitis
-                      obcaecati eligendi, quaerat aspernatur qui quia maiores in
-                      vero modi cupiditate voluptatum maxime illum? Consequuntur
-                      odit quasi fugiat aliquam impedit nostrum veritatis
-                      explicabo nesciunt nihil quia itaque porro voluptatum
-                      tempora expedita dignissimos, iste sit possimus labore
-                      facere, debitis praesentium inventore! Ratione odio ad
-                      quos nulla? Id, iure quos? Itaque modi nemo sunt
-                      perspiciatis sit officiis exercitationem totam, illum ad,
-                      mollitia error sint quisquam ratione voluptatibus
-                      architecto debitis, consequatur non ea expedita ipsum est?
-                      Consectetur magni tenetur cum accusamus, dolor velit
-                      maiores et excepturi nam quasi!
-                    </p>
+                    <p id="blog-description"></p>
                   </div>
                 </div>
-                <div class="comment-form">
-                    <h2>Izoh qo'ldirish</h2>
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Ismingiz">
-                        <input type="text" id="phone" placeholder="Telefon raqamingiz" value="+998">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="comment" placeholder="Izohingizni yozing"></textarea>
-                    </div>
-                    <button class="submit-btn">Yuborish</button>
+
+                <div class="swiper my-5">
+                  <div class="swiper-wrapper">
+                    <!-- Slides will be added dynamically -->
+                  </div>
+                  <div class="swiper-pagination"></div>
                 </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+                <div class="comment-form">
+                  <h2>Izoh qo'ldirish</h2>
+                  <div class="form-group">
+                    <input type="text" id="name" placeholder="Ismingiz" />
+                    <input
+                      type="text"
+                      id="phone"
+                      placeholder="Telefon raqamingiz"
+                      value="+998"
+                      maxlength="13"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <textarea id="comment" placeholder="Izohingizni yozing"></textarea>
+                  </div>
+                  <button class="submit-btn">Yuborish</button>
+                </div>
+                
+                <!-- Feedback Modal -->
+                <div id="feedback-modal" class="feedback-modal">
+                  <div id="feedback-message" class="feedback-message"></div>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -240,62 +164,9 @@
           <div class="col-lg-4 sidebar-widgets">
             <div class="widget-wrap">
               <div class="single-sidebar-widget popular-post-widget">
-                <h4 class="popular-title">O'xshash Posts</h4>
-                <div class="popular-post-list">
-                  <div class="single-post-list">
-                    <div class="thumb">
-                      <img class="img-fluid" src="img/pp1.webp" alt />
-                    </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h6>
-                          Retro-electric 1967 Ford Mustang revealed in Russia
-                        </h6>
-                      </a>
-                      <p>Mate Winston | Dec 15</p>
-                    </div>
-                  </div>
-                  <div class="single-post-list">
-                    <div class="thumb">
-                      <img class="img-fluid" src="img/pp1.webp" alt />
-                    </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h6>
-                          Unsettling trend of food safety at sports stadiums
-                          uncovered
-                        </h6>
-                      </a>
-                      <p>Mate Winston | Dec 15</p>
-                    </div>
-                  </div>
-                  <div class="single-post-list">
-                    <div class="thumb">
-                      <img class="img-fluid" src="img/pp1.webp" alt />
-                    </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h6>
-                          Christmas cottage from the Holiday flick selling for
-                          people
-                        </h6>
-                      </a>
-                      <p>Mate Winston | Dec 15</p>
-                    </div>
-                  </div>
-                  <div class="single-post-list">
-                    <div class="thumb">
-                      <img class="img-fluid" src="img/pp1.webp" alt />
-                    </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h6>
-                          Home improvement advice every homeowner needs to know
-                        </h6>
-                      </a>
-                      <p>Mate Winston | Dec 15</p>
-                    </div>
-                  </div>
+                <h4 class="popular-title">Popular Posts</h4>
+                <div class="popular-post-list" id="popularPostsList">
+                  <!-- Dinamik ravishda JavaScript yordamida kartalar joylashtiriladi -->
                 </div>
               </div>
             </div>
@@ -303,5 +174,7 @@
         </div>
       </div>
     </section>
+
+    <script src="./js/blog.js"></script>
   </body>
 </html>

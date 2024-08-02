@@ -2337,7 +2337,7 @@ h6 {
 
 @media (max-width: 991px) {
   .widget-wrap {
-    margin-top: 80px;
+    /* margin-top: 80px; */
   }
 }
 
