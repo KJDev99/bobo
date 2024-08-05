@@ -46,22 +46,34 @@
     <header class="header-area">
       <div class="container-fluid">
         <div class="header-wrap">
-          <div class="header-top d-flex justify-content-between align-items-lg-center navbar-expand-lg">
+          <div
+            class="header-top d-flex justify-content-between align-items-lg-center navbar-expand-lg"
+          >
             <div class="col menu-left" id="menuLeft">
               <!-- Dynamic menu items will be inserted here -->
             </div>
             <div class="col-4 text-lg-center mt-2 mt-lg-0">
               <span class="logo-outer">
                 <span class="logo-inner">
-                  <a>Ozodbobo</a>
+                  <a href="index.html">Ozodbobo</a>
                 </span>
               </span>
             </div>
             <nav class="col navbar navbar-expand-lg justify-content-end">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="lnr lnr-menu">menu</span>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapsibleNavbar"
+              >
+                <span class="lnr lnr-menu">
+                  <i class="fa-solid fa-bars"></i>
+                </span>
               </button>
-              <div class="collapse navbar-collapse menu-right" id="collapsibleNavbar">
+              <div
+                class="collapse navbar-collapse menu-right"
+                id="collapsibleNavbar"
+              >
                 <ul class="navbar-nav w-100" id="menuRight">
                   <!-- Dynamic menu items will be inserted here -->
                 </ul>
@@ -69,12 +81,26 @@
             </nav>
           </div>
         </div>
+        <div class="header_wrap_mobile">
+          <a href="index.html">Ozodbobo</a>
+          <nav class="navbar_mobile">
+            <button class="navbar_toggler">
+              <i class="fas fa-bars"></i>
+            </button>
+            <ul class="mobile_nav mobile_nav_act" id="menuRightMobile">
+              <!-- Dynamic menu items will be inserted here -->
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
-    
 
     <section class="home-banner-area relative">
-      <div id="header1" class="header finisher-header header_absolute" style="width: 100%; height: 300px"></div>
+      <div
+        id="header1"
+        class="header finisher-header header_absolute"
+        style="width: 100%; height: 300px"
+      ></div>
       <div class="container-fluid header_fluid">
         <div class="row">
           <div class="owl-carousel home-banner-owl">
@@ -84,10 +110,28 @@
       </div>
       <div class="social-icons">
         <ul>
-          <li><a href="index.html"><i class="fa-brands fa-facebook"></i></a></li>
-          <li><a href="index.html"><i class="fa-brands fa-twitter"></i></a></li>
-          <li><a href="index.html"><i class="fa-brands fa-pinterest"></i></a></li>
-          <li class="different">Share now</li>
+          <li>
+            <a
+              href="https://www.facebook.com/share/2G19uhgQfuixJ2JN/?mibextid=qi2Omg"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://youtube.com/@ozodbobouz?si=6bZ25CEGysT2mF98"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/ozod_yuliyev/"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://t.me/ozodbobo"
+              ><i class="fa-brands fa-telegram"></i
+            ></a>
+          </li>
+          <li class="different">Ulashish</li>
         </ul>
       </div>
     </section>
@@ -112,21 +156,8 @@
 
           <div class="col-lg-4 sidebar-widgets">
             <div class="widget-wrap">
-              <div class="single-sidebar-widget search-widget">
-                <form class="search-form" action="#">
-                  <input
-                    placeholder="Search Posts"
-                    name="search"
-                    type="text"
-                    onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Search Posts'"
-                  />
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-              </div>
-
               <div class="single-sidebar-widget popular-post-widget">
-                <h4 class="popular-title">Popular Posts</h4>
+                <h4 class="popular-title">Ko'p O'qilgan</h4>
                 <div class="popular-post-list" id="popularPostsList">
                   <!-- Dinamik ravishda JavaScript yordamida kartalar joylashtiriladi -->
                 </div>
@@ -144,16 +175,28 @@
             <h2>OZODBOBO</h2>
           </div>
           <div class="footer-right">
-            <a href="https://telegram.org" target="_blank" class="social-icon">
+            <a href="https://t.me/ozodbobo" target="_blank" class="social-icon">
               <i class="fa-brands fa-telegram"></i>
             </a>
-            <a href="https://instagram.com" target="_blank" class="social-icon">
+            <a
+              href="https://www.instagram.com/ozod_yuliyev/"
+              target="_blank"
+              class="social-icon"
+            >
               <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://youtube.com" target="_blank" class="social-icon">
+            <a
+              href="https://youtube.com/@ozodbobouz?si=6bZ25CEGysT2mF98"
+              target="_blank"
+              class="social-icon"
+            >
               <i class="fa-brands fa-youtube"></i>
             </a>
-            <a href="https://facebook.com" target="_blank" class="social-icon">
+            <a
+              href="https://www.facebook.com/share/2G19uhgQfuixJ2JN/?mibextid=qi2Omg"
+              target="_blank"
+              class="social-icon"
+            >
               <i class="fa-brands fa-facebook"></i>
             </a>
           </div>
@@ -163,10 +206,12 @@
         </div>
       </div>
     </footer>
-    
+
     <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script
@@ -182,6 +227,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ajaxchimp/1.3.0/jquery.ajaxchimp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
     <script
       type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"

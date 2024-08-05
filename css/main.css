@@ -2081,7 +2081,8 @@ h6 {
   background: #ffffff;
 }
 
-.home-banner-area .social-icons ul .diffrent {
+.home-banner-area .http://213.230.1070.91:9095 ul .diffrent
+{
   color: #ffffff;
 }
 
@@ -2195,8 +2196,11 @@ h6 {
   color: #13113a;
   font-size: 18px;
   line-height: 27px;
+  text-transform: uppercase;
 }
-
+.d-flex.justify-content-between h6 {
+  text-transform: uppercase;
+}
 .single-amenities .amenities-details p {
   margin-bottom: 0px;
 }

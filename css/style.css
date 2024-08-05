@@ -296,6 +296,7 @@
 .section_image {
   background: #f4f4f4;
   padding: 20px 0 1px 0;
+  margin-top: 0;
 }
 .widget-wrap .single-sidebar-widget {
   padding: 20px;
@@ -335,9 +336,11 @@
 }
 .header_fluid {
   height: calc(100vh - 100px) !important;
+  overflow: hidden;
 }
 
 .blog_decr {
+  height: 96px;
   display: -webkit-box;
   -webkit-line-clamp: 4; /* Number of lines to clamp */
   -webkit-box-orient: vertical;
@@ -455,6 +458,12 @@ input.error,
 textarea.error {
   border: 2px solid #dc3545; /* Red border for errors */
 }
+.sarousel_img {
+  width: 100%;
+}
+.swiper {
+  max-width: 648px !important;
+}
 
 @media (max-width: 768px) {
   .slider_imgs {
@@ -490,6 +499,12 @@ textarea.error {
   }
   .logo-outer {
     top: 35px;
+  }
+  .swiper {
+    max-width: 420px !important;
+  }
+  .section_image {
+    margin-top: 110px;
   }
 }
 
@@ -546,11 +561,78 @@ footer {
   color: #bbb;
   text-transform: lowercase;
 }
-
+.header-wrap {
+  display: block !important;
+}
 /* Media Queries */
+.header_wrap_mobile {
+  display: none;
+}
 
 /* For tablets */
 @media (max-width: 768px) {
+  .header_wrap_mobile {
+    display: flex;
+    height: max-content;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+  .header_wrap_mobile a {
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  .navbar_toggler {
+    border: none;
+    outline: none;
+    border-radius: 4px;
+  }
+  .navbar_toggler i {
+    font-size: 20px !important;
+    border: none;
+    outline: none;
+    padding: 4px;
+  }
+  .nav-item {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  .nav-item .nav-link {
+    text-transform: capitalize !important;
+    font-size: 18px;
+  }
+  .header-wrap {
+    display: none !important;
+  }
+  .mobile_nav {
+    position: absolute !important;
+    left: 0;
+    top: 80px;
+    background: #dfdfdf;
+    width: 100%;
+    height: max-content;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  .mobile_nav_act {
+    top: -400px;
+  }
+  .mobile_nav li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #000000;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    margin-bottom: 15px;
+    text-align: right;
+  }
+
   .footer-content {
     flex-direction: column;
     align-items: center;

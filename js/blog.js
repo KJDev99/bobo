@@ -1,5 +1,5 @@
 async function fetchMenuData() {
-  const apiUrl = "http://192.168.0.186:8000/api/blog/v1/categories/";
+  const apiUrl = "http://213.230.107.91:9095/api/blog/v1/categories/";
   try {
     const response = await fetch(apiUrl);
     return await response.json();
@@ -78,7 +78,7 @@ async function fetchAndPopulatePopularPosts() {
 
   try {
     const response = await fetch(
-      `http://192.168.0.186:8000/api/blog/v1/popular/${categoryId}/`
+      `http://213.230.107.91:9095/api/blog/v1/popular/${categoryId}/`
     );
     const data = await response.json();
 
@@ -107,7 +107,7 @@ async function fetchAndPopulatePopularPosts() {
                         <a href="#" class="post-title" data-post-id="${
                           post.id
                         }">
-                        Read More
+                        Batafsil
                         </a>
                       </div>
                       <p>${new Date(post.created_at).toLocaleDateString()}</p>
@@ -128,7 +128,7 @@ async function fetchAndPopulatePopularPosts() {
       });
     });
   } catch (error) {
-    console.error("Error fetching popular posts:", error);
+    console.error("Error fetching Ko'p O'qilgan:", error);
   }
 }
 
@@ -139,13 +139,14 @@ async function fetchBlogData() {
     return;
   }
 
-  const apiUrl = `http://192.168.0.186:8000/api/blog/v1/blog/${blogId}/`;
+  const apiUrl = `http://213.230.107.91:9095/api/blog/v1/blog/${blogId}/`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
     // Update the page with fetched data
     updatePage(data);
+    console.log(data);
   } catch (error) {
     console.error("Error fetching blog data:", error);
   }
@@ -217,57 +218,56 @@ function updatePage(data) {
 document.addEventListener("DOMContentLoaded", fetchBlogData);
 
 document.addEventListener("DOMContentLoaded", function () {
-    const blogId = localStorage.getItem("blogId");
-    
-    // Fetch comments from API
-    fetch(`http://192.168.0.186:8000/api/blog/v1/blog/${blogId}/`)
-      .then((response) => response.json())
-      .then((data) => {
-        const comments = data.comment; // Array of comments
-        
-        // Reverse the array
-        const reversedComments = comments.slice().reverse(); 
-  
-        const swiperWrapper = document.querySelector(".swiper-wrapper");
-  
-        reversedComments.forEach((comment) => {
-          const slide = document.createElement("div");
-          slide.className = "swiper-slide";
-          slide.innerHTML = `
+  const blogId = localStorage.getItem("blogId");
+
+  // Fetch comments from API
+  fetch(`http://213.230.107.91:9095/api/blog/v1/blog/${blogId}/`)
+    .then((response) => response.json())
+    .then((data) => {
+      const comments = data.comment; // Array of comments
+
+      // Reverse the array
+      const reversedComments = comments.slice().reverse();
+
+      const swiperWrapper = document.querySelector(".swiper-wrapper");
+
+      reversedComments.forEach((comment) => {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide";
+        slide.innerHTML = `
             <div>
                 <h4>${comment.full_name}</h4>
                 <q>${comment.comment}</q>
             </div>
           `;
-          swiperWrapper.appendChild(slide);
-        });
-  
-        // Initialize Swiper
-        var swiper = new Swiper(".swiper", {
-          slidesPerView: 1,
-          spaceBetween: 10,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
-          loop: true,
-        });
-  
-        // Pause autoplay on hover
-        var swiperElement = document.querySelector(".swiper");
-        swiperElement.addEventListener("mouseenter", function () {
-          swiper.autoplay.stop();
-        });
-        swiperElement.addEventListener("mouseleave", function () {
-          swiper.autoplay.start();
-        });
+        swiperWrapper.appendChild(slide);
       });
-  });
-  
+
+      // Initialize Swiper
+      var swiper = new Swiper(".swiper", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        loop: true,
+      });
+
+      // Pause autoplay on hover
+      var swiperElement = document.querySelector(".swiper");
+      swiperElement.addEventListener("mouseenter", function () {
+        swiper.autoplay.stop();
+      });
+      swiperElement.addEventListener("mouseleave", function () {
+        swiper.autoplay.start();
+      });
+    });
+});
 
 document.querySelector(".submit-btn").addEventListener("click", function () {
   const name = document.getElementById("name").value;
@@ -313,7 +313,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
       blog: blogId,
     };
 
-    fetch("http://192.168.0.186:8000/api/blog/v1/comment/post/", {
+    fetch("http://213.230.107.91:9095/api/blog/v1/comment/post/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

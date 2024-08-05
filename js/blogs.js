@@ -2,23 +2,76 @@
 async function fetchBlogPosts(categoryId, page = 1) {
   try {
     const response = await fetch(
-      `http://192.168.0.186:8000/api/blog/v1/blogs/${categoryId}/?page=${page}`
+      `http://213.230.107.91:9095/api/blog/v1/blogs/${categoryId}/?page=${page}`
     );
     return await response.json();
   } catch (error) {
     console.error("Error fetching blog posts:", error);
   }
 }
+const toggleButton = document.querySelector(".navbar_toggler");
+const mobileNav = document.querySelector(".mobile_nav");
+const icon = toggleButton.querySelector(".navbar_toggler i");
+
+toggleButton.addEventListener("click", function () {
+  // Toggle the mobile menu visibility
+  if (mobileNav.classList.contains("mobile_nav_act")) {
+    mobileNav.classList.remove("mobile_nav_act");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-times");
+  } else {
+    mobileNav.classList.add("mobile_nav_act");
+    icon.classList.add("fa-times");
+    icon.classList.remove("fa-bars");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuElement = document.getElementById("menuRightMobile");
+
+  fetch("http://213.230.107.91:9095/api/blog/v1/categories/")
+    .then((response) => response.json())
+    .then((data) => {
+      menuElement.innerHTML = data
+        .map(
+          (category) => `
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-id="${category.id}">${category.name}</a>
+                        </li>
+                    `
+        )
+        .join("");
+
+      // Add click event listeners to menu items
+      document.querySelectorAll(".nav-link").forEach((item) => {
+        item.addEventListener("click", function () {
+          mobileNav.classList.add("mobile_nav_act");
+          icon.classList.add("fa-times");
+          icon.classList.remove("fa-bars");
+          handleMenuClick;
+        });
+      });
+    })
+    .catch((error) => console.error("Error fetching categories:", error));
+});
+
+// Function to handle menu item clicks
+function handleMenuClick(event) {
+  const id = event.target.dataset.id;
+  console.log(`Menu item with ID ${id} clicked`);
+  event.preventDefault();
+  // Add your click handling logic here
+}
 
 // Populate blog posts in the container
 function populateBlogPosts(posts) {
-    const container = document.querySelector(".col-lg-8 .row");
-    container.innerHTML = ""; // Clear previous data
-  
-    posts.forEach((post) => {
-      const col = document.createElement("div");
-      col.className = "col-lg-6 col-md-6";
-      col.innerHTML = `
+  const container = document.querySelector(".col-lg-8 .row");
+  container.innerHTML = ""; // Clear previous data
+
+  posts.forEach((post) => {
+    const col = document.createElement("div");
+    col.className = "col-lg-6 col-md-6";
+    col.innerHTML = `
                 <div class="single-amenities">
                     <div class="amenities-thumb">
                         <img class="img-fluid w-100 blog_img" src="${
@@ -34,14 +87,14 @@ function populateBlogPosts(posts) {
                               post.created_at
                             ).toLocaleDateString()}</p></a>
                             <a href="#" class="d-flex align-items-center"><i class="fa-solid fa-eye ml-10"></i><p class="ml-10">${
-                              post.comment.length
+                              post.is_seen
                             }</p></a>
                         </div>
                         <p class="blog_decr">${post.description}</p>
                         <div class="d-flex justify-content-between mt-20">
                             <div><a href="#" class="blog-post-btn" data-blog-id="${
                               post.id
-                            }">Read More <span class="ti-arrow-right"></span></a></div>
+                            }">Batafsil <span class="ti-arrow-right"></span></a></div>
                             <div class="category"><a href="#"><span class="ti-folder mr-1"></span>${
                               post.category[0].name
                             }</a></div>
@@ -49,21 +102,21 @@ function populateBlogPosts(posts) {
                     </div>
                 </div>
             `;
-      container.appendChild(col);
+    container.appendChild(col);
+  });
+
+  // Add click event listener to "Batafsil" buttons
+  document.querySelectorAll(".blog-post-btn").forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      const blogId =
+        event.target.getAttribute("data-blog-id") ||
+        event.target.parentElement.getAttribute("data-blog-id");
+      localStorage.setItem("blogId", blogId);
+      window.location.href = "./blog.html";
     });
-  
-    // Add click event listener to "Read More" buttons
-    document.querySelectorAll(".blog-post-btn").forEach((btn) => {
-      btn.addEventListener("click", (event) => {
-        event.preventDefault();
-        const blogId =
-          event.target.getAttribute("data-blog-id") ||
-          event.target.parentElement.getAttribute("data-blog-id");
-        localStorage.setItem("blogId", blogId);
-        window.location.href = "./blog.html";
-      });
-    });
-  }
+  });
+}
 
 // Populate pagination controls
 function populatePagination(pagination) {
@@ -127,29 +180,29 @@ async function fetchAndRender(page = 1) {
   }
 }
 
-// Fetch and populate popular posts
+// Fetch and populate Ko'p O'qilgan
 async function fetchAndPopulatePopularPosts() {
-    const categoryId = localStorage.getItem("selectedCategoryId");
-    if (!categoryId) return;
-  
-    try {
-      const response = await fetch(
-        `http://192.168.0.186:8000/api/blog/v1/popular/${categoryId}/`
-      );
-      const data = await response.json();
-  
-      if (!Array.isArray(data)) {
-        console.error("Unexpected data format:", data);
-        return;
-      }
-  
-      const container = document.getElementById("popularPostsList");
-      container.innerHTML = ""; // Clear previous data
-  
-      data.slice(0, 4).forEach((post) => {
-        const postElement = document.createElement("div");
-        postElement.className = "single-post-list";
-        postElement.innerHTML = `
+  const categoryId = localStorage.getItem("selectedCategoryId");
+  if (!categoryId) return;
+
+  try {
+    const response = await fetch(
+      `http://213.230.107.91:9095/api/blog/v1/popular/${categoryId}/`
+    );
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      console.error("Unexpected data format:", data);
+      return;
+    }
+
+    const container = document.getElementById("popularPostsList");
+    container.innerHTML = ""; // Clear previous data
+
+    data.slice(0, 4).forEach((post) => {
+      const postElement = document.createElement("div");
+      postElement.className = "single-post-list";
+      postElement.innerHTML = `
                   <div class="thumb">
                       <img class="img-fluid popular_img" src="${
                         post.images.length > 0
@@ -160,35 +213,39 @@ async function fetchAndPopulatePopularPosts() {
                   <div class="details mt-20">
                       <div class="d-flex justify-content-between">
                       <h6>${post.title}</h6>
-                        <a href="#" class="post-title" data-post-id="${post.id}">
-                        Read More
+                        <a href="#" class="post-title" data-post-id="${
+                          post.id
+                        }">
+                        Batafsil
                         </a>
                       </div>
                       <p>${new Date(post.created_at).toLocaleDateString()}</p>
                   </div>
               `;
-        container.appendChild(postElement);
+      container.appendChild(postElement);
+    });
+
+    // Add click event listener to post titles
+    document.querySelectorAll(".post-title").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const postId =
+          event.target.getAttribute("data-post-id") ||
+          event.target.parentElement.getAttribute("data-post-id");
+        localStorage.setItem("blogId", postId);
+        window.location.href = "./blog.html";
       });
-  
-      // Add click event listener to post titles
-      document.querySelectorAll(".post-title").forEach((link) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault();
-          const postId = event.target.getAttribute("data-post-id") || event.target.parentElement.getAttribute("data-post-id");
-          localStorage.setItem("blogId", postId);
-          window.location.href = "./blog.html";
-        });
-      });
-    } catch (error) {
-      console.error("Error fetching popular posts:", error);
-    }
+    });
+  } catch (error) {
+    console.error("Error fetching Ko'p O'qilgan:", error);
   }
-  
+}
+
 // Fetch carousel data
 async function fetchCarouselData(id) {
   try {
     const response = await fetch(
-      `http://192.168.0.186:8000/api/blog/v1/carousel/${id}/`
+      `http://213.230.107.91:9095/api/blog/v1/carousel/${id}/`
     );
     return await response.json();
   } catch (error) {
@@ -241,7 +298,7 @@ async function updateCarousel() {
 
 // Fetch and update menu data
 async function fetchMenuData() {
-  const apiUrl = "http://192.168.0.186:8000/api/blog/v1/categories/";
+  const apiUrl = "http://213.230.107.91:9095/api/blog/v1/categories/";
   try {
     const response = await fetch(apiUrl);
     return await response.json();
@@ -294,6 +351,8 @@ async function updateMenu() {
   updateSelectedState();
 }
 
+document.addEventListener("DOMContentLoaded", updateMenu);
+
 // Handle menu item click
 function handleMenuClick(event) {
   event.preventDefault();
@@ -301,7 +360,7 @@ function handleMenuClick(event) {
   localStorage.setItem("selectedCategoryId", id);
   updateSelectedState();
   fetchAndRender(); // Fetch and render posts for the new category
-  fetchAndPopulatePopularPosts(); // Fetch and populate popular posts for the new category
+  fetchAndPopulatePopularPosts(); // Fetch and populate Ko'p O'qilgan for the new category
   updateCarousel(); // Update carousel for the new category
 }
 
@@ -321,7 +380,7 @@ function updateSelectedState() {
 function initializeContent() {
   updateMenu();
   fetchAndRender(); // Fetch and render posts for the initial category
-  fetchAndPopulatePopularPosts(); // Fetch and populate popular posts for the initial category
+  fetchAndPopulatePopularPosts(); // Fetch and populate Ko'p O'qilgan for the initial category
   updateCarousel(); // Initialize carousel for the initial category
 }
 
@@ -331,7 +390,7 @@ window.addEventListener("storage", (event) => {
   if (event.key === "selectedCategoryId") {
     updateMenu();
     fetchAndRender(); // Fetch and render posts when the category changes
-    fetchAndPopulatePopularPosts(); // Fetch and populate popular posts when the category changes
+    fetchAndPopulatePopularPosts(); // Fetch and populate Ko'p O'qilgan when the category changes
     updateCarousel(); // Update carousel when the category changes
   }
 });
