@@ -1,5 +1,51 @@
+const toggleButton = document.querySelector(".navbar_toggler");
+const mobileNav = document.querySelector(".mobile_nav");
+const icon = toggleButton.querySelector(".navbar_toggler i");
+
+toggleButton.addEventListener("click", function () {
+  // Toggle the mobile menu visibility
+  if (mobileNav.classList.contains("mobile_nav_act")) {
+    mobileNav.classList.remove("mobile_nav_act");
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-times");
+  } else {
+    mobileNav.classList.add("mobile_nav_act");
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuElement = document.getElementById("menuRightMobile");
+
+  fetch("https://dev.itbratrf.ru/api/blog/v1/categories/")
+    .then((response) => response.json())
+    .then((data) => {
+      menuElement.innerHTML = data
+        .map(
+          (category) => `
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-id="${category.id}">${category.name}</a>
+                        </li>
+                    `
+        )
+        .join("");
+
+      // Add click event listeners to menu items
+      document.querySelectorAll(".nav-link").forEach((item) => {
+        item.addEventListener("click", function () {
+          mobileNav.classList.add("mobile_nav_act");
+          icon.classList.add("fa-times");
+          icon.classList.remove("fa-bars");
+          handleMenuClick;
+        });
+      });
+    })
+    .catch((error) => console.error("Error fetching categories:", error));
+});
+
 async function fetchMenuData() {
-  const apiUrl = "http://213.230.107.91:9095/api/blog/v1/categories/";
+  const apiUrl = "https://dev.itbratrf.ru/api/blog/v1/categories/";
   try {
     const response = await fetch(apiUrl);
     return await response.json();
@@ -78,7 +124,7 @@ async function fetchAndPopulatePopularPosts() {
 
   try {
     const response = await fetch(
-      `http://213.230.107.91:9095/api/blog/v1/popular/${categoryId}/`
+      `https://dev.itbratrf.ru/api/blog/v1/popular/${categoryId}/`
     );
     const data = await response.json();
 
@@ -139,7 +185,7 @@ async function fetchBlogData() {
     return;
   }
 
-  const apiUrl = `http://213.230.107.91:9095/api/blog/v1/blog/${blogId}/`;
+  const apiUrl = `https://dev.itbratrf.ru/api/blog/v1/blog/${blogId}/`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -221,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const blogId = localStorage.getItem("blogId");
 
   // Fetch comments from API
-  fetch(`http://213.230.107.91:9095/api/blog/v1/blog/${blogId}/`)
+  fetch(`https://dev.itbratrf.ru/api/blog/v1/blog/${blogId}/`)
     .then((response) => response.json())
     .then((data) => {
       const comments = data.comment; // Array of comments
@@ -313,7 +359,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
       blog: blogId,
     };
 
-    fetch("http://213.230.107.91:9095/api/blog/v1/comment/post/", {
+    fetch("https://dev.itbratrf.ru/api/blog/v1/comment/post/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

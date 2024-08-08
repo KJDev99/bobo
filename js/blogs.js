@@ -2,7 +2,7 @@
 async function fetchBlogPosts(categoryId, page = 1) {
   try {
     const response = await fetch(
-      `http://213.230.107.91:9095/api/blog/v1/blogs/${categoryId}/?page=${page}`
+      `https://dev.itbratrf.ru/api/blog/v1/blogs/${categoryId}/?page=${page}`
     );
     return await response.json();
   } catch (error) {
@@ -17,19 +17,19 @@ toggleButton.addEventListener("click", function () {
   // Toggle the mobile menu visibility
   if (mobileNav.classList.contains("mobile_nav_act")) {
     mobileNav.classList.remove("mobile_nav_act");
-    icon.classList.add("fa-bars");
-    icon.classList.remove("fa-times");
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-times");
   } else {
     mobileNav.classList.add("mobile_nav_act");
-    icon.classList.add("fa-times");
-    icon.classList.remove("fa-bars");
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
   }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuElement = document.getElementById("menuRightMobile");
 
-  fetch("http://213.230.107.91:9095/api/blog/v1/categories/")
+  fetch("https://dev.itbratrf.ru/api/blog/v1/categories/")
     .then((response) => response.json())
     .then((data) => {
       menuElement.innerHTML = data
@@ -187,7 +187,7 @@ async function fetchAndPopulatePopularPosts() {
 
   try {
     const response = await fetch(
-      `http://213.230.107.91:9095/api/blog/v1/popular/${categoryId}/`
+      `https://dev.itbratrf.ru/api/blog/v1/popular/${categoryId}/`
     );
     const data = await response.json();
 
@@ -245,7 +245,7 @@ async function fetchAndPopulatePopularPosts() {
 async function fetchCarouselData(id) {
   try {
     const response = await fetch(
-      `http://213.230.107.91:9095/api/blog/v1/carousel/${id}/`
+      `https://dev.itbratrf.ru/api/blog/v1/carousel/${id}/`
     );
     return await response.json();
   } catch (error) {
@@ -298,7 +298,7 @@ async function updateCarousel() {
 
 // Fetch and update menu data
 async function fetchMenuData() {
-  const apiUrl = "http://213.230.107.91:9095/api/blog/v1/categories/";
+  const apiUrl = "https://dev.itbratrf.ru/api/blog/v1/categories/";
   try {
     const response = await fetch(apiUrl);
     return await response.json();

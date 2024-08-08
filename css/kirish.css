@@ -19,18 +19,19 @@ body {
 .custom-modal-content {
   background-color: #fff;
   display: flex;
-  padding: 40px;
+  padding: 20px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 .custom-modal-content a {
+  text-wrap: nowrap;
   display: inline-block;
   margin: 15px 0;
   font-size: 20px;
   color: #000;
   text-decoration: none;
-  padding: 15px 30px;
+  padding: 15px 15px;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -76,7 +77,6 @@ body {
     padding: 12px 25px;
   }
 }
-
 
 .kirish_logo {
   text-align: center;
@@ -173,27 +173,28 @@ body {
     font-size: 18px;
     padding: 10px 20px;
   }
-  .idea{
+  .idea {
     font-size: 161px !important;
     top: -12% !important;
   }
-  .logo-outer{
+  .logo-outer {
     display: none !important;
   }
-  .finisher-header{
+  .finisher-header {
     height: 100vh !important;
   }
-  .kirish_logo a{
+  .kirish_logo a {
     font-size: 40px;
     bottom: 50px !important;
     top: auto;
   }
-  .index_icons{
+  .index_icons {
     top: auto;
     bottom: 80px;
   }
-  .custom-modal{
+  .custom-modal {
     bottom: auto;
-    top: 40%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }

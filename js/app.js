@@ -1,7 +1,7 @@
 async function fetchCategories() {
   try {
     const response = await fetch(
-      "http://213.230.107.91:9095/api/blog/v1/categories/"
+      "https://dev.itbratrf.ru/api/blog/v1/categories/"
     );
     const data = await response.json();
     console.log(data);
