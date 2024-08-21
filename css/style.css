@@ -332,7 +332,8 @@
   object-fit: cover;
 }
 .owl-item {
-  margin-left: 25px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 .header_fluid {
   height: calc(100vh - 100px) !important;
@@ -348,7 +349,8 @@
   text-overflow: ellipsis;
 }
 .owl-dots {
-  display: none;
+  /* display: none; */
+  font-size: 20px;
 }
 
 .swiper {
@@ -399,11 +401,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.text-wrapper h1 {
+.home-banner-area .text-wrapper {
+  max-width: 750px !important;
+  padding: 20px 100px 20px 0px;
   display: -webkit-box;
-  -webkit-line-clamp: 1; /* Number of lines to clamp */
+  -webkit-line-clamp: 2; /* Number of lines to clamp */
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.text-wrapper h1 {
+  font-size: 18px !important;
 }
 .amenities-details h5 {
   display: -webkit-box;
@@ -482,9 +489,9 @@ textarea.error {
   .slider_imgs {
     height: 45vh !important;
   }
-  .home-banner-area .owl-carousel .owl-stage {
+  /* .home-banner-area .owl-carousel .owl-stage {
     left: -100px !important;
-  }
+  } */
   .home-banner-area .container-fluid:after {
     display: none;
   }
@@ -492,10 +499,11 @@ textarea.error {
     margin-top: 60px;
   }
   .owl-carousel.owl-drag .owl-item {
-    width: 100vw !important;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* width: 100vw !important; */
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   .blog-post-area.section-gap {
     padding-top: 0 !important;
@@ -597,7 +605,18 @@ footer {
 .header_wrap_mobile {
   display: none;
 }
-
+@media (max-width: 768px) {
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    padding: 0 10px;
+    width: 100%;
+  }
+  .footer-right {
+    width: 100%;
+  }
+}
 /* For tablets */
 @media (max-width: 768px) {
   .header_wrap_mobile {
@@ -761,4 +780,19 @@ footer {
   );
   background: #99b2b7;
   transform: translateZ(calc(var(--s) / 2)) rotate(90deg);
+}
+.footer_left_info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.f_logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px 0px;
+}
+.footer_left_info h2 {
+  margin-top: 20px;
 }

@@ -139,7 +139,7 @@ function populatePagination(pagination) {
     pageItem.className = `page-item ${
       pagination.current_page === i ? "active" : ""
     }`;
-    pageItem.innerHTML = `<a href="#" class="page-link">${i}</a>`;
+    pageItem.innerHTML = `<a href="#" class="page-link d-flex align-items-center justify-content-center" style="height: 35px; width: 35px;">${i}</a>`;
     pageItem.addEventListener("click", () => fetchAndRender(i));
     paginationContainer.appendChild(pageItem);
   }
